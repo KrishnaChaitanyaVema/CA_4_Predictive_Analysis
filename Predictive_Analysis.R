@@ -1,6 +1,3 @@
-getwd()
-setwd("C:/Users/chaitanya vema/Documents")
-getwd()
 # Loading the rents dataset into R console
 rent <- read.csv("NEW_DATA.csv")
 # showing the structure in R console
@@ -11,12 +8,6 @@ head(rent)
 linear_model <- lm(X2018 ~ POPULATION, data = rent)
 linear_model
 summary(linear_model)
-# The estimates of the beta coefficients
-# the standard errors (SE), which defines the accuracy of beta coefficients. 
-# For a given beta coefficient, the SE reflects how the coefficient varies under 
-# repeated sampling. It can be used to compute the confidence intervals and the t-statistic.
-# the t-statistic and the associated p-value, which defines the statistical significance of the beta coefficients.
-
 
 # Plotting Income and Rent variable to see relationship between the response(rent) and
 # predictor (Population) variable
@@ -30,13 +21,10 @@ abline(linear_model)
 # Graph shows a there is some relationship between rent and population variable
 
 cor(rent$X2018,rent$POPULATION)
-# Examining the 95% confidence intervals of the model
-
 confint(linear_model)
 
 # Scatter plots helps to visualise any linear relationships between the 
 # dependent (response) rent variable and independent (predictor) population variables
-
 
 
 scatter.smooth(x = rent$X2018, 
@@ -55,11 +43,7 @@ boxplot(rent$X2018, main = "POPULATION", sub = paste("Outlier rows: ", boxplot.s
 # Density Plot
 library(e1071)
 # Divide graph area in 2 columns
-
-
 par(mfrow = c(1, 2))
-
-
 # Density plot for rents
 plot(density(rent$X2018), main = "Density Plot :X2018",
      ylab = "Frequency",
@@ -109,8 +93,6 @@ model_p <- pf(f[1], f[2], f[3], lower = FALSE)
 
 
 # sample chooses a random sample
-
-
 no_of_records <- sample(1:nrow(rent), 0.8 * nrow(rent))
 # model training data
 training_data <- rent[no_of_records,]
@@ -118,7 +100,6 @@ training_data
 # test data
 testing_data <- rent[-no_of_records,]
 testing_data
-
 
 # Build the model on training data
 # lm(formula, data) where
@@ -161,7 +142,6 @@ summary(gvmodel)
 
 # Building the Polynomial model on training data
 # lm(formula, data) where
-# formula describes the model to be fit
 
 poly_model <- lm(X2018 ~ POPULATION + I(POPULATION^2), data = rent)
 
